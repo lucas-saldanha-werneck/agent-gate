@@ -1,0 +1,9 @@
+{
+  "name": "agent-gate",
+  "version": "0.1.0",
+  "description": "Check an AI agent run (JSONL tool-call trace) against plain-text acceptance criteria. Exits 1 on failure, so it can block a CI job.",
+  "type": "module",
+  "bin": { "agent-gate": "bin/agent-gate.mjs" },
+  "scripts": { "test": "node --test test/" },
+  "license": "MIT"
+}

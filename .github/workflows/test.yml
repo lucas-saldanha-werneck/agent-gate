@@ -1,0 +1,17 @@
+name: test
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+      - name: Gate demo (good trace must pass, bad trace must fail)
+        run: |
+          node bin/agent-gate.mjs examples/changes.criteria examples/good.jsonl
+          if node bin/agent-gate.mjs examples/changes.criteria examples/bad.jsonl; then exit 1; fi
